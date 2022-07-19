@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hello import views
+from notes import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     #AUTH
-    path('signup/', views.signupuser, name="signupuser" )
-    #hello
+    path('signup/', views.signupuser, name="signupuser" ),
+    #notes
+    path('current/', views.reminder, name='reminder'),
+
 ]
