@@ -3,7 +3,7 @@
 
 Logged In As {{ user.username }}
 
-<a href="#">Logout</a>
+<a href="{% url 'logoutuser' %}">Logout</a>
 
 {% else %}
 

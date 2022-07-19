@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm #import django user sign up form
 from django.contrib.auth.models import User #import user model
 from django.db import IntegrityError #import for error catching 
-from django.contrib.auth import login #allow actual action of logging in
+from django.contrib.auth import login,logout #allow actual action of logging in / out
 
 # Create your views here.
 
@@ -28,6 +28,15 @@ def signupuser(request):
              #tell users passwords didnt match
             return render(request, 'notes/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords did not match'}) #passwords did not match send back form and state no match
        
+def logoutuser(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('home')
+
 
 def reminder(request):
     return render(request, 'notes/reminder.html')
+
+def home(request):
+    return render(request, 'notes/home.html')
+
