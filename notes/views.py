@@ -36,22 +36,22 @@ def loginuser(request):
         if user is None: #if auth failed
             return render(request, 'notes/loginuser.html', {'form':AuthenticationForm(), 'error':"username or password incorrect"})
         else:
-            login(request, user) #if auth successful, log user in
-            return redirect('reminder') #send user to reminder
+            login(request, user)
+            return redirect('reminder')
 
 
 
 
 def logoutuser(request):
-    if request.method == 'POST': #Method is post because browsers can automatically send GET req for links (like logout)
+    if request.method == 'POST':
         logout(request)
         return redirect('home')
 
 
-def reminder(request): #actual app 'reminder' 
+def reminder(request):
     return render(request, 'notes/reminder.html')
 
-def home(request): #home page
+def home(request):
     return render(request, 'notes/home.html')
 
 
